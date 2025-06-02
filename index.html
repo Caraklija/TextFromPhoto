@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Text from photo</title>
+</head>
+<body>
+
+    <h1>Upload Image for OCR</h1>
+
+    <div class="wrapper">
+        <div class="leftside">
+            <input type="file" id="uploadleft" accept="image/*" />
+            <button onclick="clearOCR('uploadleft', 'outputleft')">Clear</button>
+            <img id="previewleft" class="thumbnail" onclick="openFullPreview('previewleft')" />
+            <div id="spinnerleft" class="spinner" style="display: none;"></div>
+            <div id="outputleft">Text will appear here...</div>
+            <button onclick="downloadText('outputleft', 'resultleft.txt')">Download TXT</button>
+        </div>
+        <div class="rightside">
+            <input type="file" id="uploadright" accept="image/*" />
+            <button onclick="clearOCR('uploadright', 'outputright')">Clear</button>
+            <img id="previewright" class="thumbnail" onclick="openFullPreview('previewright')" />
+            <div id="spinnerright" class="spinner" style="display: none;"></div>
+            <div id="outputright">Text will appear here...</div>
+            <button onclick="downloadText('outputright', 'resultright.txt')">Download TXT</button>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@v4.0.2/dist/tesseract.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
