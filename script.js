@@ -38,13 +38,19 @@ handleUpload('uploadright', 'outputright', 'spinnerright', 'previewright');
 function clearOCR(uploadId, outputId) {
   const input = document.getElementById(uploadId);
   const output = document.getElementById(outputId);
+  input.value = '';
+  output.innerText = 'Text will appear here...';
 
-  input.value = ''; // Clear file input
-  output.innerText = 'Text will appear here...'; // Clear OCR output
+  // 🔁 FIXED: Explicitly get the corresponding preview image by ID
+  const previewId = 'preview' + uploadId.replace('upload', '');
+  const preview = document.getElementById(previewId);
+  if (preview) {
+    preview.src = '';
+    preview.style.display = 'none';
+  }
 
-  const preview = document.getElementById('preview' + uploadId.slice(-1)); // e.g., 'preview1' from 'upload1'
-  preview.src = '';
-  preview.style.display = 'none';
+  // 🔁 OPTIONAL: Also close modal if open
+  closeModal();
 }
 
 
