@@ -35,13 +35,16 @@ handleUpload('uploadleft', 'outputleft', 'spinnerleft', 'previewleft');
 handleUpload('uploadright', 'outputright', 'spinnerright', 'previewright');
 
 
-
 function clearOCR(uploadId, outputId) {
   const input = document.getElementById(uploadId);
   const output = document.getElementById(outputId);
 
-  input.value = ''; // Clear the file input
-  output.innerText = 'Text will appear here...'; // Reset the output text
+  input.value = ''; // Clear file input
+  output.innerText = 'Text will appear here...'; // Clear OCR output
+
+  const preview = document.getElementById('preview' + uploadId.slice(-1)); // e.g., 'preview1' from 'upload1'
+  preview.src = '';
+  preview.style.display = 'none';
 }
 
 
